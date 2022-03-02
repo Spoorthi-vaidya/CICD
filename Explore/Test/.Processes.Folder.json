@@ -1,0 +1,22 @@
+[
+   {
+      "objectGuid": "2pEmU91iCNVlwZzJqI9tcr",
+      "objectName": "Processes",
+      "objectType": "Folder",
+      "path": "/Explore/Test",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "Binary",
+            "description": "",
+            "documentState": "COMPLETE"
+         },
+         "contextAttributes": [],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": null
+      }
+   }
+]
