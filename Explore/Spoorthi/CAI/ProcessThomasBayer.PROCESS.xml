@@ -1,0 +1,115 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>BC3Q6gaabclvAhr-gt-17122430-2022-03-17T08:13:54.441Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessThomasBayer</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>spvaidya_new_dev@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2022-03-17T08:13:54Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>spvaidya_new_dev@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-03-17T08:13:59Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessThomasBayer/ProcessThomasBayer.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessThomasBayer"
+                  name="ProcessThomasBayer"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_id" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_firstname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_lastname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_errormessage" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="ksfrt9zn" targetId="ksfrt9zz"/>
+               </start>
+               <eventContainer id="ksfrt9zz">
+                  <service id="ksfrt9zm">
+                     <title>GetOwnerInfo </title>
+                     <serviceName>CN-ThomasBayer:GetOwnerInfo </serviceName>
+                     <serviceGUID>99Uf91OWG1pcezpEiBOuqf</serviceGUID>
+                     <serviceInput>
+                        <parameter name="CustomerId" source="field" updatable="true">input.in_id</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="ksfrta01">
+                     <assignment id="ksfrta0w">
+                        <title>Assignment to out_firstname, out_lastname</title>
+                        <operation source="field" to="output.out_firstname">output.firstname</operation>
+                        <operation source="field" to="output.out_lastname">output.lastname</operation>
+                     </assignment>
+                     <link id="ksfrta02" targetId="ksfrt9zz" type="containerLink"/>
+                  </flow>
+                  <flow id="ksfrta04">
+                     <assignment id="ksfrta1g">
+                        <title>Assignment to out_errormessage</title>
+                        <operation source="field" to="output.out_errormessage">output.faultInfo[1]/reason</operation>
+                        <link id="ksioxost" targetId="ksioxoss"/>
+                     </assignment>
+                     <throw id="ksioxoss">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="ksfrta00" targetId="ksfrta01" type="containerLink"/>
+                  <link id="ksfrt9zo" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="ksfrt9zy" interrupting="true">
+                        <link id="ksfrta03" targetId="ksfrta04" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>76UJIhvG8yxeZdiyHDMmOP</types1:GUID>
+      <types1:DisplayName>ProcessThomasBayer</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-03-17T13:00:44.115Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

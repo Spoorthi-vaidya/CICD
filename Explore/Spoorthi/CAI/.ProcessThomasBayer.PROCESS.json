@@ -1,0 +1,44 @@
+{
+  "objectInfo" : {
+    "id" : "76UJIhvG8yxeZdiyHDMmOP",
+    "name" : "ProcessThomasBayer",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "BC3Q6gaabclvAhr-gt-17122430-2022-03-17T08:13:54.441Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "99Uf91OWG1pcezpEiBOuqf",
+    "name" : "CN-ThomasBayer",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "qlGwm7iUQbgdwUi-gt-17490323-2022-03-17T08:13:54.268Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Spoorthi/CAI"
+  } ]
+}
