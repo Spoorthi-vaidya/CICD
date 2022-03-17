@@ -1,0 +1,24 @@
+[
+   {
+      "objectGuid": "8LOPgjKm5bWis81zJw9xM6",
+      "objectName": "Processtest2",
+      "objectType": "PROCESS",
+      "path": "/Explore/Test/Processes",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": null,
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "yfTlGUGeFRqXpIW-gt-17101959-2022-03-17T07:46:43.388Z::pd.xml"
+         }
+      }
+   }
+]
