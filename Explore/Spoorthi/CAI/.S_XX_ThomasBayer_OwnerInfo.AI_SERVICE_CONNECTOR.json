@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "50oSl0YIYajeNwSbyLzwQb",
+    "name" : "S_XX_ThomasBayer_OwnerInfo",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "9rQbdqVIKchzt1Y-gt-11907108-2022-03-17T08:13:53.976Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "CAI ILT Development\\XX_FirstName",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

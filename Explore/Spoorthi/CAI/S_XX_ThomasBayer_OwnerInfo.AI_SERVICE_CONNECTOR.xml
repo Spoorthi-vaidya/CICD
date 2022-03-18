@@ -1,0 +1,78 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>9rQbdqVIKchzt1Y-gt-11907108-2022-03-17T08:13:53.976Z::svc.xml</types1:EntryId>
+      <types1:Name>S_XX_ThomasBayer_OwnerInfo</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>CAI ILT Development\XX_FirstName</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>spvaidya_new_dev@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2022-03-17T08:13:54Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>spvaidya_new_dev@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-03-17T08:13:56Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/S_XX_ThomasBayer_OwnerInfo/S_XX_ThomasBayer_OwnerInfo_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="S_XX_ThomasBayer_OwnerInfo"
+                            label=""
+                            name="S_XX_ThomasBayer_OwnerInfo"
+                            uuid="89d85eb0-2cd0-48de-ac8e-bf7b4264cd1b">
+            <description>CAI ILT Development\XX_FirstName</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetOwnerInfo "
+                       maxRedirects="100"
+                       name="GetOwnerInfo "
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="CustomerId"
+                                name="CustomerId"
+                                required="true"
+                                testWith="7"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://api.predic8.de/shop/customers/{$CustomerId}"
+                                        verb="GET"/>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="firstname"
+                            property="firstname"
+                            type="string"/>
+                     <field description=""
+                            name="lastname"
+                            property="lastname"
+                            type="string"/>
+                     <field description=""
+                            name="customer_orders_url"
+                            property="orders_url"
+                            type="string"/>
+                     <field description="" name="message" property="message" type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>50oSl0YIYajeNwSbyLzwQb</types1:GUID>
+      <types1:DisplayName>S_XX_ThomasBayer_OwnerInfo</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-03-18T07:07:08.613Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
