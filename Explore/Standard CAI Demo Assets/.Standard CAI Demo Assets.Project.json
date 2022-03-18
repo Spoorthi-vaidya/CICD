@@ -1,0 +1,22 @@
+{
+  "objectInfo" : {
+    "id" : "1QPoJusp158bzRMUt0MYqb",
+    "name" : "Standard CAI Demo Assets",
+    "type" : "Project",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : null,
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "This project contains folders for Common use and specific assets for standard Cloud Application Integration demonstration assets.\n",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "objectRefs" : [ ]
+}

@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "cKrOy0BhVY1ghZFvvsVVO1",
+    "name" : "IICSRESTAPI",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "9VYxWPQE8jIw8jI-gt-13656233-2022-03-18T06:30:39.68Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Added Connection Details mah .20191216",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

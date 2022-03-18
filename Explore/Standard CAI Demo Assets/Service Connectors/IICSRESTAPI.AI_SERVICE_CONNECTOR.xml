@@ -1,0 +1,1552 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>9VYxWPQE8jIw8jI-gt-13656233-2022-03-18T06:30:39.68Z::svc.xml</types1:EntryId>
+      <types1:Name>IICSRESTAPI</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>Added Connection Details mah .20191216</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>spvaidya_new_dev@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2022-03-18T06:30:40Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>spvaidya_new_dev@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-03-18T06:30:49Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/IICSRESTAPI/IICSRESTAPI_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="IICSRESTAPI"
+                            label=""
+                            name="IICSRESTAPI"
+                            uuid="55fd41e5-da68-44e8-ada8-4cacb274f7a9">
+            <description>Added Connection Details mah .20191216</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description=""
+                                    masked="false"
+                                    name="username"
+                                    required="true"
+                                    testWith="shyadav@demo.informatica.com"
+                                    type="string"/>
+               <connectionAttribute description=""
+                                    masked="true"
+                                    name="password"
+                                    required="true"
+                                    testWith=""
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Login"
+                       maxRedirects="100"
+                       name="Login"
+                       preemptiveAuth="false"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="@type"
+                                name="@type"
+                                required="true"
+                                testWith="login"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="commaSeparated"
+                                        url="https://dm-us.informaticacloud.com/ma/api/v2/user/login"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                        <body>{{
+"username":"{$username}",
+"password":"{$password}",
+"@type":"login"
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="icSessionId"
+                            property="icSessionId"
+                            type="string"/>
+                     <field description="" name="orgId" property="orgId" type="string"/>
+                     <field description=""
+                            name="serverUrl"
+                            property="serverUrl"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Logout"
+                       maxRedirects="100"
+                       name="Logout"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="true"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="true"
+                                testWith="6opwxezDV6ye1ESlohkD4Y"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://dm-us.informaticacloud.com/ma/api/v2/user/logout"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get Mapping"
+                       maxRedirects="100"
+                       name="Get Mapping"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith="do0rod5ubArhTKKdwvksis"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/mapping"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/xml</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="Mapping" type="objectlist">
+                        <options>
+                           <option name="referenceTo">Mapping</option>
+                        </options>
+                        <xquery>{for $map in (//mappingTemplate)
+return
+&lt;Mapping&gt;
+   &lt;id&gt;{$map/id/data()}&lt;/id&gt;
+   &lt;name&gt;{$map/name/data()}&lt;/name&gt;
+   &lt;createdBy&gt;{$map/createdBy/data()}&lt;/createdBy&gt;
+   &lt;createTime&gt;{$map/createTime/data()}&lt;/createTime&gt;
+   &lt;type&gt;{$map/type/data()}&lt;/type&gt;
+   &lt;description&gt;{$map/description/data()}&lt;/description&gt;
+&lt;/Mapping&gt;}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Lookup"
+                       maxRedirects="100"
+                       name="Lookup"
+                       preemptiveAuth="false"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="sessionId"
+                                name="sessionId"
+                                required="true"
+                                testWith="1P6WdMa3eatd9znOE7xbav"
+                                type="string"/>
+                     <parameter label="baseApiUrl"
+                                name="baseApiUrl"
+                                required="true"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="id"
+                                name="id"
+                                required="true"
+                                testWith="5367M8JIMookJDDe3P7RMa"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="commaSeparated"
+                                        url="{$baseApiUrl}/public/core/v3/lookup"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="INFA-SESSION-ID">{$sessionId}</header>
+                        </httpHeaders>
+                        <body>{{
+"objects": [{{
+"id": "{$id}"
+}}
+]
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="id" property="id" type="string"/>
+                     <field description="" name="path" property="path" type="string"/>
+                     <field description="" name="type" property="type" type="string"/>
+                     <field description=""
+                            name="description"
+                            property="description"
+                            type="string"/>
+                     <field description=""
+                            name="createdBy"
+                            property="createdBy"
+                            type="string"/>
+                     <field description=""
+                            name="updateTime"
+                            property="updateTime"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetAgents"
+                       maxRedirects="100"
+                       name="GetAgents"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith="feG7cxdqaEMcguFjTLTl4o"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/agent"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/xml</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="agents" type="objectlist">
+                        <options>
+                           <option name="referenceTo">Agents</option>
+                        </options>
+                        <xquery>{for $agents in (//agent)
+return
+&lt;Agents&gt;
+   &lt;agentId&gt;{$agents/id/data()}&lt;/agentId&gt;
+   &lt;agentName&gt;{$agents/name/data()}&lt;/agentName&gt;
+   &lt;agentHost&gt;{$agents/agentHost/data()}&lt;/agentHost&gt;
+   &lt;active&gt;{$agents/active/data()}&lt;/active&gt;
+   &lt;platform&gt;{$agents/platform/data()} &lt;/platform&gt;
+   &lt;agentVersion&gt;{$agents/agentVersion/data()}&lt;/agentVersion&gt;
+   &lt;upgradeStatus&gt;{$agents/upgradeStatus/data()}&lt;/upgradeStatus&gt;
+&lt;/Agents&gt;}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get Connection"
+                       maxRedirects="100"
+                       name="Get Connection"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith="24bdHiD2cwFg3EAgddnqAn"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/connection"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/xml</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="Connections" type="objectlist">
+                        <options>
+                           <option name="referenceTo">Connection</option>
+                        </options>
+                        <xquery>{for $con in (//connection)
+return
+&lt;Connection&gt;
+   &lt;id&gt;{$con/id/data()}&lt;/id&gt;
+   &lt;name&gt;{$con/name/data()}&lt;/name&gt;
+   &lt;agentId&gt;{$con/agentId/data()}&lt;/agentId&gt;
+   &lt;runtimeEnvironmentId&gt;{$con/runtimeEnvironmentId/data()}&lt;/runtimeEnvironmentId&gt;
+   &lt;instanceName&gt;{$con/instanceName/data()}&lt;/instanceName&gt;
+   &lt;type&gt;{$con/type/data()}&lt;/type&gt;
+   &lt;createdBy&gt;{$con/createdBy/data()}&lt;/createdBy&gt;
+   &lt;createTime&gt;{$con/createTime/data()}&lt;/createTime&gt;
+&lt;/Connection&gt;}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="TestConnection"
+                       maxRedirects="100"
+                       name="TestConnection"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith="24bdHiD2cwFg3EAgddnqAn"
+                                type="string"/>
+                     <parameter label="connectionId"
+                                name="connectionId"
+                                required="false"
+                                testWith="0101PH0B00000000000T"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/connection/test/{$connectionId}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="ConnectionStatus"
+                            property="description"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get Mttask"
+                       maxRedirects="100"
+                       name="Get Mttask"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith="feG7cxdqaEMcguFjTLTl4o"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/mttask"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="mttask" type="objectlist">
+                        <options>
+                           <option name="referenceTo">Mttask</option>
+                        </options>
+                        <xquery>{for $mtt in (//mtTask)
+return
+&lt;MtTask&gt;
+   &lt;id&gt;{$mtt/id/data()}&lt;/id&gt;
+   &lt;name&gt;{$mtt/name/data()}&lt;/name&gt;
+   &lt;createdBy&gt;{$mtt/createdBy/data()}&lt;/createdBy&gt;
+   &lt;createTime&gt;{$mtt/createTime/data()}&lt;/createTime&gt;
+&lt;/MtTask&gt;}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetSchedule"
+                       maxRedirects="100"
+                       name="GetSchedule"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/schedule"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="Schedule" type="objectlist">
+                        <options>
+                           <option name="referenceTo">Schedule</option>
+                        </options>
+                        <xquery>{for $sch in (//schedule)
+return
+&lt;Schedule&gt;
+   &lt;id&gt;{$sch/id/data()}&lt;/id&gt;
+   &lt;name&gt;{$sch/name/data()}&lt;/name&gt;
+   &lt;createdBy&gt;{$sch/createdBy/data()}&lt;/createdBy&gt;
+   &lt;createTime&gt;{$sch/createTime/data()}&lt;/createTime&gt;
+&lt;/Schedule&gt;}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetWorkFlow"
+                       maxRedirects="100"
+                       name="GetWorkFlow"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverURL"
+                                name="serverURL"
+                                required="false"
+                                testWith="https://app2.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/workflow"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetTasks"
+                       maxRedirects="100"
+                       name="GetTasks"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="true"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="true"
+                                testWith="bdEerLlBMM3lao1jfg3dKL"
+                                type="string"/>
+                     <parameter label="type"
+                                name="type"
+                                required="false"
+                                testWith="DRS"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/task"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/xml</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="Task" type="objectlist">
+                        <options>
+                           <option name="referenceTo">Task</option>
+                        </options>
+                        <xquery>{for $Task in (//baseTask)
+return
+&lt;Task&gt;
+   &lt;id&gt;{$Task/id/data()}&lt;/id&gt;
+   &lt;name&gt;{$Task/name/data()}&lt;/name&gt;
+   &lt;type&gt;{$Task/type/data()}&lt;/type&gt;
+   &lt;createdBy&gt;{$Task/createdBy/data()}&lt;/createdBy&gt;
+   &lt;description&gt;{$Task/description/data()}&lt;/description&gt;
+&lt;/Task&gt;}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="DeleteConnection"
+                       maxRedirects="100"
+                       name="DeleteConnection"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith="51vWG3dEIGehjRuQwrYRit"
+                                type="string"/>
+                     <parameter label="connectionId"
+                                name="connectionId"
+                                required="false"
+                                testWith="0101PH0B00000000007L"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/connection/{$connectionId}"
+                                        verb="DELETE">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="DeleteMapping"
+                       maxRedirects="100"
+                       name="DeleteMapping"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/mapping/{$id}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="DeleteMttask"
+                       maxRedirects="100"
+                       name="DeleteMttask"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/mttask/{$id}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="DeleteSchedule"
+                       maxRedirects="100"
+                       name="DeleteSchedule"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/schedule/{$id}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="DeleteWorkFlow"
+                       maxRedirects="100"
+                       name="DeleteWorkFlow"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/workflow/{$id}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept-Charset">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="DeleteTask"
+                       maxRedirects="100"
+                       name="DeleteTask"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/task/{$id}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="ActivityMonitor"
+                       maxRedirects="100"
+                       name="ActivityMonitor"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/activity/activityMonitor?details=true"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="ActivityMonitorEntries"
+                            type="reference"
+                            xmlElement="activityMonitoryEntry">
+                        <options>
+                           <option name="referenceTo">ActivityMonitorEntry</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetMTTaskByName"
+                       maxRedirects="100"
+                       name="GetMTTaskByName"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter label="taskName"
+                                name="taskName"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/mttask/name/{$taskName}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="MtTask" type="reference" xmlElement=".">
+                        <options>
+                           <option name="referenceTo">mtTaskFull</option>
+                        </options>
+                     </field>
+                     <field description=""
+                            name="parameters"
+                            type="objectlist"
+                            xmlElement="parameter">
+                        <options>
+                           <option name="referenceTo">parameter</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="UpdateMappingTask"
+                       maxRedirects="100"
+                       name="UpdateMappingTask"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter label="orgId"
+                                name="orgId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter label="taskId"
+                                name="taskId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter label="taskName"
+                                name="taskName"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter label="agentId"
+                                name="agentId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter label="parameterId"
+                                name="parameterId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter label="parameterName"
+                                name="parameterName"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter label="parameterLabel"
+                                name="parameterLabel"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter label="sourceConnectionId"
+                                name="sourceConnectionId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter label="fileName"
+                                name="fileName"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter label="mappingId"
+                                name="mappingId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/mttask/{$taskId}"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                           <header name="Update-Mode">PARTIAL</header>
+                        </httpHeaders>
+                        <body>{{
+               "@type": "mtTask",
+               "id": "{$taskId}",
+               "orgId": "{$orgId}",
+               "name": "{$taskName}",
+               "description": "",
+               "agentId": "{$agentId}",
+               "parameters": [{{
+                              "@type": "mtTaskParameter",
+                              "id": {$parameterId},
+                              "name": "{$parameterName}",
+                              "type": "EXTENDED_SOURCE",
+                              "label": "{$parameterLabel}",
+                              "sourceConnectionId": "{$sourceConnectionId}",
+                              "newFlatFile": false,
+                              "newObject": false,
+                              "showBusinessNames": false,
+                              "naturalOrder": true,
+                              "truncateTarget": false,
+                              "tgtFieldRefs": {{}},
+                              "extendedObject": {{
+                                             "@type": "extendedObject",
+                                             "object": {{
+                                                            "@type": "mObject",
+					                                        "name": "{$fileName}",
+					                                        "label": "{$fileName}",
+                                                            "metadataUpdated": false,
+                                                            "relations": [],
+                                                            "children": []
+                                             }},
+                                            
+                                             "sortFields": []
+                                             }}
+                              }}],
+               "mappingId": "{$mappingId}"
+               
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="startTask"
+                       maxRedirects="100"
+                       name="startTask"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter label="taskId"
+                                name="taskId"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/mapping"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                        <body>{{"@type": "job","taskId": "{$taskId}","taskType":"MTT"}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="runId" property="runId" type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get Connection source"
+                       maxRedirects="100"
+                       name="Get Connection source"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverUrl"
+                                name="serverUrl"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith="51vWG3dEIGehjRuQwrYRit"
+                                type="string"/>
+                     <parameter label="connectionId"
+                                name="connectionId"
+                                required="false"
+                                testWith="0101PH0B000000000013"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/connection/source/{$connectionId}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/xml</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="auditLog"
+                       maxRedirects="100"
+                       name="auditLog"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="icSessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="aMSe0FmFt2rfWhB4BS8wGc"
+                                type="string"/>
+                     <parameter name="serverUrl"
+                                nogen="true"
+                                required="true"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverUrl}/api/v2/auditlog"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="icSessionId">{$icSessionId}</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="auditLogs" type="objectlist">
+                        <options>
+                           <option name="referenceTo">AuditLog</option>
+                        </options>
+                        <xquery>{for $log in //root/*
+return
+&lt;AuditLog&gt;
+   &lt;entryTime&gt;{$log/entryTime/text()}&lt;/entryTime&gt;
+   &lt;eventParam&gt;{$log/eventParam/text()}&lt;/eventParam&gt;
+   &lt;objectName&gt;{$log/objectName/text()}&lt;/objectName&gt;
+   &lt;id&gt;{$log/id/text()}&lt;/id&gt;
+   &lt;type&gt;{$log/type/text()}&lt;/type&gt;
+   &lt;message&gt;{$log/message/text()}&lt;/message&gt;
+   &lt;category&gt;{$log/category/text()}&lt;/category&gt;
+   &lt;event&gt;{$log/event/text()}&lt;/event&gt;
+   &lt;version&gt;{$log/version/text()}&lt;/version&gt;
+   &lt;orgId&gt;{$log/orgId/text()}&lt;/orgId&gt;
+   &lt;objectId&gt;{$log/objectId/text()}&lt;/objectId&gt;
+   &lt;username&gt;{$log/username/text()}&lt;/username&gt;
+&lt;/AuditLog&gt;}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetConnectionByName"
+                       maxRedirects="100"
+                       name="GetConnectionByName"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="serverURL"
+                                name="serverURL"
+                                required="false"
+                                testWith="https://na1.dm-us.informaticacloud.com/saas"
+                                type="string"/>
+                     <parameter label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith="3uTFgFPjMsDfJobjNb8FAw"
+                                type="string"/>
+                     <parameter label="connName"
+                                name="connName"
+                                required="false"
+                                testWith="Twitch_Redshift_Connection"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$serverURL}/api/v2/connection/name/{$connName}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Content-Type">application/xml</header>
+                           <header name="Accept">application/xml</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="Connection"
+                            type="reference"
+                            xmlElement=".">
+                        <options>
+                           <option name="referenceTo">connectionDetail</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Mapping">
+                  <description/>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="description" type="string"/>
+                     <field name="type" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Lookup">
+                  <description/>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="path" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="updateTime" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ExportMappingId">
+                  <description/>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="startTime" type="string"/>
+                     <field name="status" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Agents">
+                  <description/>
+                  <detail>
+                     <field name="agentId" type="string"/>
+                     <field name="agentName" type="string"/>
+                     <field name="agentHost" type="string"/>
+                     <field name="active" type="string"/>
+                     <field name="platform" type="string"/>
+                     <field name="agentVersion" type="string"/>
+                     <field name="upgradeStatus" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Connection">
+                  <description/>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="agentId" type="string"/>
+                     <field name="runtimeEnvironmentId" type="string"/>
+                     <field name="instanceName" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="createTime" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Connections">
+                  <description/>
+                  <detail>
+                     <field name="Connection" type="reference">
+                        <options>
+                           <option name="referenceTo">Connection</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Mttask">
+                  <description/>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="createdBy" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Schedule">
+                  <description/>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="createdBy" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Workflow">
+                  <description/>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="createdBy" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Task">
+                  <description/>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="instanceName" type="string"/>
+                     <field name="createTime" type="string"/>
+                     <field name="description" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ActivityMonitorEntry">
+                  <description/>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="objectName" type="string"/>
+                     <field name="runId" type="string"/>
+                     <field name="startTime" type="string"/>
+                     <field name="endTime" type="string"/>
+                     <field name="executionState" type="string"/>
+                     <field name="failedSourceRows" type="string"/>
+                     <field name="successSourcerows" type="string"/>
+                     <field name="failedTargetRows" type="string"/>
+                     <field name="successTargetRows" type="string"/>
+                     <field name="agentId" type="string"/>
+                     <field name="errorMsg" type="string"/>
+                     <field name="runContextType" type="string"/>
+                     <field name="runtimeEnvironmentId" type="string"/>
+                     <field name="taskId" type="string"/>
+                     <field name="taskName" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="mtTaskFull">
+                  <description/>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="orgId" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="description" type="string"/>
+                     <field name="createTime" type="string"/>
+                     <field name="updateTime" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="updatedBy" type="string"/>
+                     <field name="agentId" type="string"/>
+                     <field name="runtimeEnvironmentId" type="string"/>
+                     <field name="maxLogs" type="string"/>
+                     <field name="parameters" type="reference">
+                        <options>
+                           <option name="referenceTo">$any</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="verbose" type="string"/>
+                     <field name="lastRunTime" type="string"/>
+                     <field name="mappingId" type="string"/>
+                     <field name="shortDescription" type="string"/>
+                     <field name="sessionProperties" type="string"/>
+                     <field name="sequences" type="string"/>
+                     <field name="inOutParameters" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="parameters">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="parameter" type="objectlist">
+                        <options>
+                           <option name="referenceTo">parameters</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="parameter">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="id" type="int"/>
+                     <field name="name" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="label" type="string"/>
+                     <field name="description" type="string"/>
+                     <field name="uiProperties" type="reference">
+                        <options>
+                           <option name="referenceTo">uiProperties</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="sourceConnectionId" type="string"/>
+                     <field name="newFlatFile" type="string"/>
+                     <field name="newObject" type="string"/>
+                     <field name="showBusinessNames" type="string"/>
+                     <field name="naturalOrder" type="string"/>
+                     <field name="truncateTarget" type="string"/>
+                     <field name="bulkApiDBTarget" type="string"/>
+                     <field name="customFuncCfg" type="reference">
+                        <options>
+                           <option name="referenceTo">customFuncCfg</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="tgtFieldRefs" type="string"/>
+                     <field name="extendedObject" type="reference">
+                        <options>
+                           <option name="referenceTo">extendedObject</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="runtimeAttrs" type="string"/>
+                     <field name="isRESTModernSource" type="boolean"/>
+                     <field name="isFileList" type="boolean"/>
+                     <field name="handleSpecialChars" type="string"/>
+                     <field name="overriddenFields" type="string"/>
+                     <field name="targetConnectionId" type="string"/>
+                     <field name="targetObject" type="string"/>
+                     <field name="targetObjectLabel" type="string"/>
+                     <field name="newObjectName" type="string"/>
+                     <field name="operationType" type="string"/>
+                     <field name="tgtFFAttrs" type="reference">
+                        <options>
+                           <option name="referenceTo">tgtFFAttrs</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="uiProperties">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="entry" type="objectlist">
+                        <options>
+                           <option name="referenceTo">entry</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="customFuncCfg">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="id" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="extendedObject">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="object" type="reference">
+                        <options>
+                           <option name="referenceTo">object</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="filters" type="string"/>
+                     <field name="sortFields" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="object">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="name" type="string"/>
+                     <field name="label" type="string"/>
+                     <field name="metadataUpdated" type="string"/>
+                     <field name="relations" type="string"/>
+                     <field name="children" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="tgtFFAttrs">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="delimiter" type="string"/>
+                     <field name="escapeChar" type="string"/>
+                     <field name="headerLineNo" type="int"/>
+                     <field name="id" type="int"/>
+                     <field name="textQualifier" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Tasks">
+                  <description/>
+                  <detail>
+                     <field name="Task" type="reference">
+                        <options>
+                           <option name="referenceTo">Task</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AuditLog">
+                  <description/>
+                  <detail>
+                     <field name="entryTime" type="datetime"/>
+                     <field name="eventParam" type="string"/>
+                     <field name="objectName" type="string"/>
+                     <field name="id" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="message" type="string"/>
+                     <field name="category" type="string"/>
+                     <field name="event" type="string"/>
+                     <field name="version" type="string"/>
+                     <field name="orgId" type="string"/>
+                     <field name="objectId" type="string"/>
+                     <field name="username" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="connectionDetail">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="orgId" type="string"/>
+                     <field name="name" type="string"/>
+                     <field name="createTime" type="string"/>
+                     <field name="updateTime" type="string"/>
+                     <field name="createdBy" type="string"/>
+                     <field name="updatedBy" type="string"/>
+                     <field name="agentId" type="string"/>
+                     <field name="runtimeEnvironmentId" type="string"/>
+                     <field name="instanceName" type="string"/>
+                     <field name="instanceDisplayName" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="port" type="int"/>
+                     <field name="majorUpdateTime" type="string"/>
+                     <field name="timeout" type="int"/>
+                     <field name="connParams" type="reference">
+                        <options>
+                           <option name="referenceTo">connParams</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="connParams">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="entry" type="objectlist">
+                        <options>
+                           <option name="referenceTo">entry</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="entry">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="key" type="string"/>
+                     <field name="value" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>cKrOy0BhVY1ghZFvvsVVO1</types1:GUID>
+      <types1:DisplayName>IICSRESTAPI</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-03-18T08:09:05.323Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
