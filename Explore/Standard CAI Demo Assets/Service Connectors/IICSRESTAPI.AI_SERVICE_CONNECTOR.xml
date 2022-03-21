@@ -12,10 +12,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>spvaidya_new_dev@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2022-03-18T06:30:40Z</types1:CreationDate>
-      <types1:ModifiedBy/>
+      <types1:ModifiedBy>spvaidya_new_dev@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2022-03-21T04:32:32Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>spvaidya_new_dev@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2022-03-18T06:30:49Z</types1:PublicationDate>
+      <types1:PublicationDate>2022-03-21T04:33:39Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/rt.connector/IICSRESTAPI/IICSRESTAPI_svcDef.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -1548,5 +1549,5 @@ return
       <types1:GUID>cKrOy0BhVY1ghZFvvsVVO1</types1:GUID>
       <types1:DisplayName>IICSRESTAPI</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2022-03-18T08:09:05.323Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2022-03-21T04:36:34.609Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
