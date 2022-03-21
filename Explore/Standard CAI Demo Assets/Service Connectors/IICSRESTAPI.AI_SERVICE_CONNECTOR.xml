@@ -4,7 +4,7 @@
       <types1:EntryId>9VYxWPQE8jIw8jI-gt-13656233-2022-03-18T06:30:39.68Z::svc.xml</types1:EntryId>
       <types1:Name>IICSRESTAPI</types1:Name>
       <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
-      <types1:Description>Added Connection Details mah .20191216</types1:Description>
+      <types1:Description>Added Connection Details mah .20191216---------------</types1:Description>
       <types1:AppliesTo/>
       <types1:Tags/>
       <types1:VersionLabel>1.0</types1:VersionLabel>
@@ -13,10 +13,10 @@
       <types1:CreatedBy>spvaidya_new_dev@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2022-03-18T06:30:40Z</types1:CreationDate>
       <types1:ModifiedBy>spvaidya_new_dev@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2022-03-21T04:32:32Z</types1:ModificationDate>
+      <types1:ModificationDate>2022-03-21T05:13:13Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>spvaidya_new_dev@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2022-03-21T04:33:39Z</types1:PublicationDate>
+      <types1:PublicationDate>2022-03-21T05:13:18Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/rt.connector/IICSRESTAPI/IICSRESTAPI_svcDef.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -27,7 +27,7 @@
                             label=""
                             name="IICSRESTAPI"
                             uuid="55fd41e5-da68-44e8-ada8-4cacb274f7a9">
-            <description>Added Connection Details mah .20191216</description>
+            <description>Added Connection Details mah .20191216---------------</description>
             <tags/>
             <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
                <connectionAttribute description=""
@@ -1164,11 +1164,14 @@ return
                               name="Mapping">
                   <description/>
                   <detail>
-                     <field name="id" type="string"/>
-                     <field name="name" type="string"/>
-                     <field name="createdBy" type="string"/>
-                     <field name="description" type="string"/>
-                     <field name="type" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="name" nullable="true" required="false" type="string"/>
+                     <field name="createdBy" nullable="true" required="false" type="string"/>
+                     <field name="description"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1176,10 +1179,13 @@ return
                               name="Lookup">
                   <description/>
                   <detail>
-                     <field name="id" type="string"/>
-                     <field name="path" type="string"/>
-                     <field name="createdBy" type="string"/>
-                     <field name="updateTime" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="path" nullable="true" required="false" type="string"/>
+                     <field name="createdBy" nullable="true" required="false" type="string"/>
+                     <field name="updateTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1187,10 +1193,10 @@ return
                               name="ExportMappingId">
                   <description/>
                   <detail>
-                     <field name="id" type="string"/>
-                     <field name="name" type="string"/>
-                     <field name="startTime" type="string"/>
-                     <field name="status" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="name" nullable="true" required="false" type="string"/>
+                     <field name="startTime" nullable="true" required="false" type="string"/>
+                     <field name="status" nullable="true" required="false" type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1198,13 +1204,19 @@ return
                               name="Agents">
                   <description/>
                   <detail>
-                     <field name="agentId" type="string"/>
-                     <field name="agentName" type="string"/>
-                     <field name="agentHost" type="string"/>
-                     <field name="active" type="string"/>
-                     <field name="platform" type="string"/>
-                     <field name="agentVersion" type="string"/>
-                     <field name="upgradeStatus" type="string"/>
+                     <field name="agentId" nullable="true" required="false" type="string"/>
+                     <field name="agentName" nullable="true" required="false" type="string"/>
+                     <field name="agentHost" nullable="true" required="false" type="string"/>
+                     <field name="active" nullable="true" required="false" type="string"/>
+                     <field name="platform" nullable="true" required="false" type="string"/>
+                     <field name="agentVersion"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="upgradeStatus"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1212,14 +1224,23 @@ return
                               name="Connection">
                   <description/>
                   <detail>
-                     <field name="id" type="string"/>
-                     <field name="name" type="string"/>
-                     <field name="agentId" type="string"/>
-                     <field name="runtimeEnvironmentId" type="string"/>
-                     <field name="instanceName" type="string"/>
-                     <field name="type" type="string"/>
-                     <field name="createdBy" type="string"/>
-                     <field name="createTime" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="name" nullable="true" required="false" type="string"/>
+                     <field name="agentId" nullable="true" required="false" type="string"/>
+                     <field name="runtimeEnvironmentId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="instanceName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
+                     <field name="createdBy" nullable="true" required="false" type="string"/>
+                     <field name="createTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1227,7 +1248,10 @@ return
                               name="Connections">
                   <description/>
                   <detail>
-                     <field name="Connection" type="reference">
+                     <field name="Connection"
+                            nullable="true"
+                            required="false"
+                            type="reference">
                         <options>
                            <option name="referenceTo">Connection</option>
                            <option name="relationshipName">Child</option>
@@ -1240,9 +1264,9 @@ return
                               name="Mttask">
                   <description/>
                   <detail>
-                     <field name="id" type="string"/>
-                     <field name="name" type="string"/>
-                     <field name="createdBy" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="name" nullable="true" required="false" type="string"/>
+                     <field name="createdBy" nullable="true" required="false" type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1250,9 +1274,9 @@ return
                               name="Schedule">
                   <description/>
                   <detail>
-                     <field name="id" type="string"/>
-                     <field name="name" type="string"/>
-                     <field name="createdBy" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="name" nullable="true" required="false" type="string"/>
+                     <field name="createdBy" nullable="true" required="false" type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1260,9 +1284,9 @@ return
                               name="Workflow">
                   <description/>
                   <detail>
-                     <field name="id" type="string"/>
-                     <field name="name" type="string"/>
-                     <field name="createdBy" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="name" nullable="true" required="false" type="string"/>
+                     <field name="createdBy" nullable="true" required="false" type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1270,13 +1294,22 @@ return
                               name="Task">
                   <description/>
                   <detail>
-                     <field name="id" type="string"/>
-                     <field name="name" type="string"/>
-                     <field name="createdBy" type="string"/>
-                     <field name="type" type="string"/>
-                     <field name="instanceName" type="string"/>
-                     <field name="createTime" type="string"/>
-                     <field name="description" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="name" nullable="true" required="false" type="string"/>
+                     <field name="createdBy" nullable="true" required="false" type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
+                     <field name="instanceName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="createTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="description"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1284,23 +1317,47 @@ return
                               name="ActivityMonitorEntry">
                   <description/>
                   <detail>
-                     <field name="id" type="string"/>
-                     <field name="type" type="string"/>
-                     <field name="objectName" type="string"/>
-                     <field name="runId" type="string"/>
-                     <field name="startTime" type="string"/>
-                     <field name="endTime" type="string"/>
-                     <field name="executionState" type="string"/>
-                     <field name="failedSourceRows" type="string"/>
-                     <field name="successSourcerows" type="string"/>
-                     <field name="failedTargetRows" type="string"/>
-                     <field name="successTargetRows" type="string"/>
-                     <field name="agentId" type="string"/>
-                     <field name="errorMsg" type="string"/>
-                     <field name="runContextType" type="string"/>
-                     <field name="runtimeEnvironmentId" type="string"/>
-                     <field name="taskId" type="string"/>
-                     <field name="taskName" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
+                     <field name="objectName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="runId" nullable="true" required="false" type="string"/>
+                     <field name="startTime" nullable="true" required="false" type="string"/>
+                     <field name="endTime" nullable="true" required="false" type="string"/>
+                     <field name="executionState"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="failedSourceRows"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="successSourcerows"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="failedTargetRows"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="successTargetRows"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="agentId" nullable="true" required="false" type="string"/>
+                     <field name="errorMsg" nullable="true" required="false" type="string"/>
+                     <field name="runContextType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="runtimeEnvironmentId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="taskId" nullable="true" required="false" type="string"/>
+                     <field name="taskName" nullable="true" required="false" type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1308,30 +1365,57 @@ return
                               name="mtTaskFull">
                   <description/>
                   <detail>
-                     <field name="id" type="string"/>
-                     <field name="orgId" type="string"/>
-                     <field name="name" type="string"/>
-                     <field name="description" type="string"/>
-                     <field name="createTime" type="string"/>
-                     <field name="updateTime" type="string"/>
-                     <field name="createdBy" type="string"/>
-                     <field name="updatedBy" type="string"/>
-                     <field name="agentId" type="string"/>
-                     <field name="runtimeEnvironmentId" type="string"/>
-                     <field name="maxLogs" type="string"/>
-                     <field name="parameters" type="reference">
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="orgId" nullable="true" required="false" type="string"/>
+                     <field name="name" nullable="true" required="false" type="string"/>
+                     <field name="description"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="createTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="updateTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="createdBy" nullable="true" required="false" type="string"/>
+                     <field name="updatedBy" nullable="true" required="false" type="string"/>
+                     <field name="agentId" nullable="true" required="false" type="string"/>
+                     <field name="runtimeEnvironmentId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="maxLogs" nullable="true" required="false" type="string"/>
+                     <field name="parameters"
+                            nullable="true"
+                            required="false"
+                            type="reference">
                         <options>
                            <option name="referenceTo">$any</option>
                            <option name="relationshipName">Child</option>
                         </options>
                      </field>
-                     <field name="verbose" type="string"/>
-                     <field name="lastRunTime" type="string"/>
-                     <field name="mappingId" type="string"/>
-                     <field name="shortDescription" type="string"/>
-                     <field name="sessionProperties" type="string"/>
-                     <field name="sequences" type="string"/>
-                     <field name="inOutParameters" type="string"/>
+                     <field name="verbose" nullable="true" required="false" type="string"/>
+                     <field name="lastRunTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="mappingId" nullable="true" required="false" type="string"/>
+                     <field name="shortDescription"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="sessionProperties"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="sequences" nullable="true" required="false" type="string"/>
+                     <field name="inOutParameters"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1339,7 +1423,10 @@ return
                               name="parameters">
                   <description>An automatically generated process object</description>
                   <detail>
-                     <field name="parameter" type="objectlist">
+                     <field name="parameter"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
                         <options>
                            <option name="referenceTo">parameters</option>
                            <option name="relationshipName">Child</option>
@@ -1352,48 +1439,114 @@ return
                               name="parameter">
                   <description>An automatically generated process object</description>
                   <detail>
-                     <field name="id" type="int"/>
-                     <field name="name" type="string"/>
-                     <field name="type" type="string"/>
-                     <field name="label" type="string"/>
-                     <field name="description" type="string"/>
-                     <field name="uiProperties" type="reference">
+                     <field name="id" nullable="true" required="false" type="int"/>
+                     <field name="name" nullable="true" required="false" type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
+                     <field name="label" nullable="true" required="false" type="string"/>
+                     <field name="description"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="uiProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference">
                         <options>
                            <option name="referenceTo">uiProperties</option>
                            <option name="relationshipName">Child</option>
                         </options>
                      </field>
-                     <field name="sourceConnectionId" type="string"/>
-                     <field name="newFlatFile" type="string"/>
-                     <field name="newObject" type="string"/>
-                     <field name="showBusinessNames" type="string"/>
-                     <field name="naturalOrder" type="string"/>
-                     <field name="truncateTarget" type="string"/>
-                     <field name="bulkApiDBTarget" type="string"/>
-                     <field name="customFuncCfg" type="reference">
+                     <field name="sourceConnectionId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="newFlatFile"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="newObject" nullable="true" required="false" type="string"/>
+                     <field name="showBusinessNames"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="naturalOrder"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="truncateTarget"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="bulkApiDBTarget"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="customFuncCfg"
+                            nullable="true"
+                            required="false"
+                            type="reference">
                         <options>
                            <option name="referenceTo">customFuncCfg</option>
                            <option name="relationshipName">Child</option>
                         </options>
                      </field>
-                     <field name="tgtFieldRefs" type="string"/>
-                     <field name="extendedObject" type="reference">
+                     <field name="tgtFieldRefs"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="extendedObject"
+                            nullable="true"
+                            required="false"
+                            type="reference">
                         <options>
                            <option name="referenceTo">extendedObject</option>
                            <option name="relationshipName">Child</option>
                         </options>
                      </field>
-                     <field name="runtimeAttrs" type="string"/>
-                     <field name="isRESTModernSource" type="boolean"/>
-                     <field name="isFileList" type="boolean"/>
-                     <field name="handleSpecialChars" type="string"/>
-                     <field name="overriddenFields" type="string"/>
-                     <field name="targetConnectionId" type="string"/>
-                     <field name="targetObject" type="string"/>
-                     <field name="targetObjectLabel" type="string"/>
-                     <field name="newObjectName" type="string"/>
-                     <field name="operationType" type="string"/>
-                     <field name="tgtFFAttrs" type="reference">
+                     <field name="runtimeAttrs"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="isRESTModernSource"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="isFileList"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="handleSpecialChars"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="overriddenFields"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="targetConnectionId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="targetObject"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="targetObjectLabel"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="newObjectName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="operationType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="tgtFFAttrs"
+                            nullable="true"
+                            required="false"
+                            type="reference">
                         <options>
                            <option name="referenceTo">tgtFFAttrs</option>
                            <option name="relationshipName">Child</option>
@@ -1406,7 +1559,7 @@ return
                               name="uiProperties">
                   <description>An automatically generated process object</description>
                   <detail>
-                     <field name="entry" type="objectlist">
+                     <field name="entry" nullable="true" required="false" type="objectlist">
                         <options>
                            <option name="referenceTo">entry</option>
                            <option name="relationshipName">Child</option>
@@ -1419,7 +1572,7 @@ return
                               name="customFuncCfg">
                   <description>An automatically generated process object</description>
                   <detail>
-                     <field name="id" type="int"/>
+                     <field name="id" nullable="true" required="false" type="int"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1427,14 +1580,17 @@ return
                               name="extendedObject">
                   <description>An automatically generated process object</description>
                   <detail>
-                     <field name="object" type="reference">
+                     <field name="object" nullable="true" required="false" type="reference">
                         <options>
                            <option name="referenceTo">object</option>
                            <option name="relationshipName">Child</option>
                         </options>
                      </field>
-                     <field name="filters" type="string"/>
-                     <field name="sortFields" type="string"/>
+                     <field name="filters" nullable="true" required="false" type="string"/>
+                     <field name="sortFields"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1442,11 +1598,14 @@ return
                               name="object">
                   <description>An automatically generated process object</description>
                   <detail>
-                     <field name="name" type="string"/>
-                     <field name="label" type="string"/>
-                     <field name="metadataUpdated" type="string"/>
-                     <field name="relations" type="string"/>
-                     <field name="children" type="string"/>
+                     <field name="name" nullable="true" required="false" type="string"/>
+                     <field name="label" nullable="true" required="false" type="string"/>
+                     <field name="metadataUpdated"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="relations" nullable="true" required="false" type="string"/>
+                     <field name="children" nullable="true" required="false" type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1454,11 +1613,17 @@ return
                               name="tgtFFAttrs">
                   <description>An automatically generated process object</description>
                   <detail>
-                     <field name="delimiter" type="string"/>
-                     <field name="escapeChar" type="string"/>
-                     <field name="headerLineNo" type="int"/>
-                     <field name="id" type="int"/>
-                     <field name="textQualifier" type="string"/>
+                     <field name="delimiter" nullable="true" required="false" type="string"/>
+                     <field name="escapeChar"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="headerLineNo" nullable="true" required="false" type="int"/>
+                     <field name="id" nullable="true" required="false" type="int"/>
+                     <field name="textQualifier"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1466,7 +1631,7 @@ return
                               name="Tasks">
                   <description/>
                   <detail>
-                     <field name="Task" type="reference">
+                     <field name="Task" nullable="true" required="false" type="reference">
                         <options>
                            <option name="referenceTo">Task</option>
                            <option name="relationshipName">Child</option>
@@ -1479,18 +1644,27 @@ return
                               name="AuditLog">
                   <description/>
                   <detail>
-                     <field name="entryTime" type="datetime"/>
-                     <field name="eventParam" type="string"/>
-                     <field name="objectName" type="string"/>
-                     <field name="id" type="string"/>
-                     <field name="type" type="string"/>
-                     <field name="message" type="string"/>
-                     <field name="category" type="string"/>
-                     <field name="event" type="string"/>
-                     <field name="version" type="string"/>
-                     <field name="orgId" type="string"/>
-                     <field name="objectId" type="string"/>
-                     <field name="username" type="string"/>
+                     <field name="entryTime"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="eventParam"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="objectName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
+                     <field name="message" nullable="true" required="false" type="string"/>
+                     <field name="category" nullable="true" required="false" type="string"/>
+                     <field name="event" nullable="true" required="false" type="string"/>
+                     <field name="version" nullable="true" required="false" type="string"/>
+                     <field name="orgId" nullable="true" required="false" type="string"/>
+                     <field name="objectId" nullable="true" required="false" type="string"/>
+                     <field name="username" nullable="true" required="false" type="string"/>
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
@@ -1498,22 +1672,43 @@ return
                               name="connectionDetail">
                   <description>An automatically generated process object</description>
                   <detail>
-                     <field name="id" type="string"/>
-                     <field name="orgId" type="string"/>
-                     <field name="name" type="string"/>
-                     <field name="createTime" type="string"/>
-                     <field name="updateTime" type="string"/>
-                     <field name="createdBy" type="string"/>
-                     <field name="updatedBy" type="string"/>
-                     <field name="agentId" type="string"/>
-                     <field name="runtimeEnvironmentId" type="string"/>
-                     <field name="instanceName" type="string"/>
-                     <field name="instanceDisplayName" type="string"/>
-                     <field name="type" type="string"/>
-                     <field name="port" type="int"/>
-                     <field name="majorUpdateTime" type="string"/>
-                     <field name="timeout" type="int"/>
-                     <field name="connParams" type="reference">
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="orgId" nullable="true" required="false" type="string"/>
+                     <field name="name" nullable="true" required="false" type="string"/>
+                     <field name="createTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="updateTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="createdBy" nullable="true" required="false" type="string"/>
+                     <field name="updatedBy" nullable="true" required="false" type="string"/>
+                     <field name="agentId" nullable="true" required="false" type="string"/>
+                     <field name="runtimeEnvironmentId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="instanceName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="instanceDisplayName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
+                     <field name="port" nullable="true" required="false" type="int"/>
+                     <field name="majorUpdateTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="timeout" nullable="true" required="false" type="int"/>
+                     <field name="connParams"
+                            nullable="true"
+                            required="false"
+                            type="reference">
                         <options>
                            <option name="referenceTo">connParams</option>
                            <option name="relationshipName">Child</option>
@@ -1526,7 +1721,7 @@ return
                               name="connParams">
                   <description>An automatically generated process object</description>
                   <detail>
-                     <field name="entry" type="objectlist">
+                     <field name="entry" nullable="true" required="false" type="objectlist">
                         <options>
                            <option name="referenceTo">entry</option>
                            <option name="relationshipName">Child</option>
@@ -1539,8 +1734,8 @@ return
                               name="entry">
                   <description>An automatically generated process object</description>
                   <detail>
-                     <field name="key" type="string"/>
-                     <field name="value" type="string"/>
+                     <field name="key" nullable="true" required="false" type="string"/>
+                     <field name="value" nullable="true" required="false" type="string"/>
                   </detail>
                </processObject>
             </objects>
@@ -1549,5 +1744,5 @@ return
       <types1:GUID>cKrOy0BhVY1ghZFvvsVVO1</types1:GUID>
       <types1:DisplayName>IICSRESTAPI</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2022-03-21T04:36:34.609Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2022-03-21T05:15:47.956Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
